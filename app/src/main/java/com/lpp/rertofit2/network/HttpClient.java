@@ -35,8 +35,7 @@ public class HttpClient {
     }
 
     private HttpClient() {
-        OkHttpClient client = new OkHttpClient();
-        client.newBuilder().interceptors().add(new Interceptor() {
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
@@ -50,7 +49,7 @@ public class HttpClient {
                         response.request().url(), (t2 - t1) / 1e6d, response.headers()));
                 return response;
             }
-        });
+        }).build();
         //设置超时
         client.newBuilder().connectTimeout(15, TimeUnit.SECONDS);
         client.newBuilder().readTimeout(15, TimeUnit.SECONDS);
@@ -69,6 +68,7 @@ public class HttpClient {
 
     /**
      * 接口请求头方法
+     *
      * @param V330
      * @param categoryId
      * @param subscriber
