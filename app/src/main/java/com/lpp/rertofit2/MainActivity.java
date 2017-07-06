@@ -13,12 +13,14 @@ import com.lpp.rertofit2.network.HttpClient;
 import com.lpp.rertofit2.network.ImageLoad;
 import com.lpp.rertofit2.network.NetworkSubscriber;
 
+import rx.Subscription;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button bt;
     private ImageView imageView;
     private TextView tv_con;
-
+    protected Subscription subscription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
         }
     }
 }

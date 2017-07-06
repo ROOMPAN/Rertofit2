@@ -18,6 +18,7 @@ import rx.Scheduler;
 
 public class RxThreadCallAdapater extends CallAdapter.Factory {
 
+
     RxJavaCallAdapterFactory rxFactory = RxJavaCallAdapterFactory.create();
     private Scheduler subscribeScheduler;
     private Scheduler observerScheduler;

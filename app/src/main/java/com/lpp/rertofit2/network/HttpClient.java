@@ -64,8 +64,6 @@ public class HttpClient {
                 .build();
         mApi = mRetrofit.create(ApiManagerService.class);
     }
-
-
     /**
      * 接口请求头方法
      *

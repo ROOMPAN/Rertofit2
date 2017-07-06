@@ -14,14 +14,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="64dp"
         android:text="Hello World!" />
+
     <TextView
-        tools:text="adsdadss"
+        android:id="@+id/tv_con"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_con"
-        android:layout_below="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
-        android:layout_marginTop="78dp" />
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="78dp"
+        tools:text="adsdadss" />
 
     <ImageView
         android:id="@+id/imageView"
