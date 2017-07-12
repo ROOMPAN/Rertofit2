@@ -1,8 +1,8 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 
-import com.lpp.rertofit2.models.BaseMessageEntity;
-import com.lpp.rertofit2.models.VirtualBean;
+import com.lpp.retrofit2.models.BaseMessageEntity;
+import com.lpp.retrofit2.models.VirtualBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,4 +1,4 @@
-package com.lpp.rertofit2;
+package com.lpp.retrofit2;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.lpp.rertofit2.R;
+import com.lpp.retrofit2.R;
 
 /**
  * 图片请求封装

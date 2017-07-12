@@ -1,4 +1,4 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 import android.support.annotation.Nullable;
 

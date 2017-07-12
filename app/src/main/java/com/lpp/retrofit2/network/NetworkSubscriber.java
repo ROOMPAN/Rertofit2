@@ -1,8 +1,8 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 import android.util.Log;
 
-import com.lpp.rertofit2.models.BaseEntity;
+import com.lpp.retrofit2.models.BaseEntity;
 
 import rx.Subscriber;
 

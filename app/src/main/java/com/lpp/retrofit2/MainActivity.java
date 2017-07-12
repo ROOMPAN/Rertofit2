@@ -1,4 +1,4 @@
-package com.lpp.rertofit2;
+package com.lpp.retrofit2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lpp.rertofit2.models.VirtualBean;
-import com.lpp.rertofit2.network.HttpClient;
-import com.lpp.rertofit2.network.ImageLoad;
-import com.lpp.rertofit2.network.NetworkSubscriber;
+import com.lpp.retrofit2.models.VirtualBean;
+import com.lpp.retrofit2.network.HttpClient;
+import com.lpp.retrofit2.network.ImageLoad;
+import com.lpp.retrofit2.network.NetworkSubscriber;
 
 import rx.Subscription;
 

@@ -1,4 +1,4 @@
-package com.lpp.rertofit2.models;
+package com.lpp.retrofit2.models;
 
 /**
  * Created by xuyanjun on 15/10/24.

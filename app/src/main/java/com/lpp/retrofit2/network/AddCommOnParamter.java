@@ -1,9 +1,9 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 import android.support.compat.BuildConfig;
 import android.text.TextUtils;
 
-import com.lpp.rertofit2.utils.MobileUtils;
+import com.lpp.retrofit2.utils.MobileUtils;
 
 import java.io.IOException;
 import java.util.Arrays;

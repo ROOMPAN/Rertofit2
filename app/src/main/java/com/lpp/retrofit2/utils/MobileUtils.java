@@ -1,10 +1,10 @@
-package com.lpp.rertofit2.utils;
+package com.lpp.retrofit2.utils;
 
 import android.app.Activity;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.lpp.rertofit2.MyApplication;
+import com.lpp.retrofit2.MyApplication;
 
 /**
  * Created by xuyanjun on 15/11/10.

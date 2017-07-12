@@ -1,8 +1,8 @@
-package com.lpp.rertofit2.network;
+package com.lpp.retrofit2.network;
 
 import android.util.Log;
 
-import com.lpp.rertofit2.models.VirtualBean;
+import com.lpp.retrofit2.models.VirtualBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
