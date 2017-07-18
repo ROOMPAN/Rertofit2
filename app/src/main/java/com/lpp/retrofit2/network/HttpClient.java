@@ -11,6 +11,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
@@ -47,6 +48,14 @@ public class HttpClient {
                 long t2 = System.nanoTime();
                 System.out.println(String.format("Received response for %s in %.1fms%n%s",
                         response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
+                ResponseBody responseBody = response.peekBody(1024 * 1024);
+
+                System.out.println(String.format("接收响应: [%s] %n返回json:【%s】 %.1fms%n%s",
+                        response.request().url(),
+                        responseBody.string(),
+                        (t2 - t1) / 1e6d,
+                        response.headers()));
                 return response;
             }
         }).build();
@@ -76,4 +85,5 @@ public class HttpClient {
         Observable<VirtualBean> observable = mApi.getVirtualLi(V330, categoryId);
         observable.subscribe(subscriber);
     }
+
 }
