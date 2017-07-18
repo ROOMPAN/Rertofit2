@@ -25,4 +25,8 @@ public interface ApiManagerService {
 
     @GET("frontCategory?")
     Observable<VirtualBean> getVirtualLi(@Query("V330") String V330, @Query("categoryId") String categoryId);
+
+    @GET("defaultdials-0.json")
+    Observable<VirtualBean> getdefaultdials();
+
 }

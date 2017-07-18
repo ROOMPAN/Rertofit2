@@ -3,6 +3,7 @@ package com.lpp.retrofit2.network;
 import android.util.Log;
 
 import com.lpp.retrofit2.models.VirtualBean;
+import com.lpp.retrofit2.utils.JsonFormat;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +12,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
@@ -22,17 +24,12 @@ import rx.schedulers.Schedulers;
  */
 
 public class HttpClient {
+    //    http://offlintab.firefoxchina.cn/data/master-ii
+//    http://sp.kaola.com/api/category/
     private static final String DOMAIN = "http://sp.kaola.com/api/category/";
+    private static HttpClient sInstance;
     private Retrofit mRetrofit;
     private ApiManagerService mApi;
-    private static HttpClient sInstance;
-
-    public synchronized static HttpClient getInstance() {
-        if (sInstance == null) {
-            sInstance = new HttpClient();
-        }
-        return sInstance;
-    }
 
     private HttpClient() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -45,8 +42,14 @@ public class HttpClient {
                         request.url(), chain.connection(), request.headers()));
                 Response response = chain.proceed(signRequest == null ? request : signRequest);
                 long t2 = System.nanoTime();
-                System.out.println(String.format("Received response for %s in %.1fms%n%s",
-                        response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
+                ResponseBody responseBody = response.peekBody(1024 * 1024);
+                Log.e("intercept: ", String.format("接收响应: [%s] %n返回json:[%s] %.1fms%n%s",
+                        response.request().url(),
+                        JsonFormat.format(responseBody.string()),
+                        (t2 - t1) / 1e6d,
+                        response.headers()));
+
                 return response;
             }
         }).build();
@@ -64,6 +67,14 @@ public class HttpClient {
                 .build();
         mApi = mRetrofit.create(ApiManagerService.class);
     }
+
+    public synchronized static HttpClient getInstance() {
+        if (sInstance == null) {
+            sInstance = new HttpClient();
+        }
+        return sInstance;
+    }
+
     /**
      * 接口请求头方法
      *
@@ -76,4 +87,10 @@ public class HttpClient {
         Observable<VirtualBean> observable = mApi.getVirtualLi(V330, categoryId);
         observable.subscribe(subscriber);
     }
+
+    public void getdefaultdials(NetworkSubscriber subscriber) {
+        Observable<VirtualBean> observable = mApi.getdefaultdials();
+        observable.subscribe(subscriber);
+    }
+
 }

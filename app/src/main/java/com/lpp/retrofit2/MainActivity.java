@@ -17,10 +17,11 @@ import rx.Subscription;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    protected Subscription subscription;
     private Button bt;
     private ImageView imageView;
     private TextView tv_con;
-    protected Subscription subscription;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onNext(VirtualBean data) {
                         super.onNext(data);
                         if (data.isOKCode()) {
-                            Log.e("data", data.getBody().getBrandList().get(0).toString());
                             tv_con.setText(data.getBody().getBrandList().get(0).toString()+"");
                             ImageLoad.into(MainActivity.this, data.getBody().getBrandList().get(0).getBrandLogo(), imageView);
                         } else {
@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
+//                HttpClient.getInstance().getdefaultdials(new NetworkSubscriber<defaubean>() {
+//                    @Override
+//                    public void onNext(defaubean data) {
+//                        super.onNext(data);
+//                    }
+//                });
                 break;
         }
     }
