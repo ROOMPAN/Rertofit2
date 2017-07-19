@@ -52,13 +52,13 @@ public class HttpClient {
 
                 return response;
             }
-        }).build();
-        //设置超时
-        client.newBuilder().connectTimeout(15, TimeUnit.SECONDS);
-        client.newBuilder().readTimeout(15, TimeUnit.SECONDS);
-        client.newBuilder().writeTimeout(15, TimeUnit.SECONDS);
-        //错误重连
-        client.newBuilder().retryOnConnectionFailure(true);
+        })      //设置超时
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                //错误重连
+                .retryOnConnectionFailure(true)
+                .build();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -83,7 +83,6 @@ public class HttpClient {
      * @param subscriber
      */
     public void getVirLi(String V330, String categoryId, NetworkSubscriber subscriber) {
-        Log.e("v330", "" + V330 + "ID" + categoryId);
         Observable<VirtualBean> observable = mApi.getVirtualLi(V330, categoryId);
         observable.subscribe(subscriber);
     }
