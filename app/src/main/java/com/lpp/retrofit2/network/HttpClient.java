@@ -1,7 +1,5 @@
 package com.lpp.retrofit2.network;
 
-import android.util.Log;
-
 import com.lpp.retrofit2.models.VirtualBean;
 import com.lpp.retrofit2.utils.JsonFormat;
 
@@ -44,18 +42,15 @@ public class HttpClient {
                 long t2 = System.nanoTime();
 
                 ResponseBody responseBody = response.peekBody(1024 * 1024);
-                Log.e("intercept: ", String.format("接收响应: [%s] %n返回json:[%s] %.1fms%n%s",
+                System.out.println("intercept: " + String.format("接收响应: [%s] %n返回json:[%s] %.1fms%n%s",
                         response.request().url(),
                         JsonFormat.format(responseBody.string()),
                         (t2 - t1) / 1e6d,
                         response.headers()));
 
                 return response;
-            }
-        })      //设置超时
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
+            }//设置超时
+        }).connectTimeout(15, TimeUnit.SECONDS).readTimeout(15, TimeUnit.SECONDS).writeTimeout(15, TimeUnit.SECONDS)
                 //错误重连
                 .retryOnConnectionFailure(true)
                 .build();
