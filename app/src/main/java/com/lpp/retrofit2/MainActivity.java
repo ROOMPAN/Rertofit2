@@ -1,13 +1,13 @@
 package com.lpp.retrofit2;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lpp.retrofit2.activity.BaseActivity;
 import com.lpp.retrofit2.models.VirtualBean;
 import com.lpp.retrofit2.network.HttpClient;
 import com.lpp.retrofit2.network.ImageLoad;
@@ -15,7 +15,7 @@ import com.lpp.retrofit2.network.NetworkSubscriber;
 
 import rx.Subscription;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     protected Subscription subscription;
     private Button bt;
@@ -27,13 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        setTitleText("首页");
     }
 
     private void initView() {
-        bt = (Button) findViewById(R.id.bt);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        bt = findViewById(R.id.bt);
+        imageView = findViewById(R.id.imageView);
         bt.setOnClickListener(this);
-        tv_con = (TextView) findViewById(R.id.tv_con);
+        tv_con = findViewById(R.id.tv_con);
         tv_con.setOnClickListener(this);
     }
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onNext(VirtualBean data) {
                         super.onNext(data);
                         if (data.isOKCode()) {
-                            tv_con.setText(data.getBody().getBrandList().get(0).toString()+"");
+                            tv_con.setText(data.getBody().getBrandList().get(0).toString() + "");
                             ImageLoad.into(MainActivity.this, data.getBody().getBrandList().get(0).getBrandLogo(), imageView);
                         } else {
                             Log.e("erro", "" + data.msg);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 
     @Override
     protected void onDestroy() {
