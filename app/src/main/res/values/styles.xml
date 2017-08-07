@@ -4,4 +4,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
