@@ -3,7 +3,6 @@ package com.lpp.retrofit2.activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -14,6 +13,7 @@ import com.lpp.retrofit2.R;
 import com.lpp.retrofit2.business.FindviewInterFace;
 import com.lpp.retrofit2.business.LoadingInterface;
 
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import rx.Subscription;
 
 
@@ -21,7 +21,7 @@ import rx.Subscription;
  * Created by liupanpan on 2017/7/31.
  */
 
-public class BaseActivity extends AppCompatActivity implements FindviewInterFace, LoadingInterface {
+public class BaseActivity extends SwipeBackActivity implements FindviewInterFace, LoadingInterface {
     protected Subscription subscription;
     private TextView title_text;
     private RelativeLayout mRoomView;

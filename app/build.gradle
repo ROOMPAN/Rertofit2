@@ -37,4 +37,6 @@ dependencies {
     compile 'io.reactivex:rxjava:1.0.14'
     //glide 图片请求
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    //侧滑关闭 activity
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 }

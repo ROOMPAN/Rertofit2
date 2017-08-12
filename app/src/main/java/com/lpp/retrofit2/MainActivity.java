@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setSwipeBackEnable(false);//设置 activity 侧滑关闭
         setTitleText("首页");
     }
 
